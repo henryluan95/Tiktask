@@ -1,11 +1,35 @@
 @use "../../styles/mixins" as *;
 
 .todos {
-  @include flex-layout(row, space-evenly);
-  width: 90%;
-  flex-wrap: wrap;
+  @include flex-layout(column, space-between, flex-start);
+  width: 95%;
+  margin-top: 0.625rem;
+  gap: 2rem;
 
-  @include tablet {
-    width: 95%;
+  @include desktop {
+    flex-direction: row;
+  }
+
+  &__heading {
+    font-size: 1.875rem;
+    color: white;
+  }
+
+  &__active {
+    @include flex-layout(column, space-evenly);
+    border-radius: 0.3125rem;
+    width: 47.5%;
+    padding: 0.9375rem;
+    background-color: rgb(50, 195, 205);
+
+    @include tablet {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__remove {
+    @extend .todos__active;
+    background-color: lightcoral;
   }
 }
