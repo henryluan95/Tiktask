@@ -2,41 +2,79 @@ import React from "react";
 import "./TodoList.scss";
 import { Todo } from "../Model/model";
 import TodoCard from "../TodoCard/TodoCard";
+import { Droppable } from "react-beautiful-dnd";
 
 interface Props {
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  completedTodos: Todo[];
+  setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
+const TodoList: React.FC<Props> = ({
+  todos,
+  setTodos,
+  completedTodos,
+  setCompletedTodos,
+}) => {
   return (
     <div className="todos">
-      <div className="todos__active">
-        <span className="todos__heading">Active Tasks</span>
-        {todos.map((todo) => {
+      <Droppable droppableId="TodosList">
+        {(provided) => {
           return (
-            <TodoCard
-              todo={todo}
-              todos={todos}
-              setTodos={setTodos}
-              key={todo.id}
-            />
+            <div
+              className="todos__active"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              <span className="todos__heading">Active Tasks</span>
+              <span className="todos__number">
+                Number of Tasks: {todos.length}
+              </span>
+              {todos.map((todo, index) => {
+                return (
+                  <TodoCard
+                    index={index}
+                    todo={todo}
+                    todos={todos}
+                    setTodos={setTodos}
+                    key={todo.id}
+                  />
+                );
+              })}
+              {provided.placeholder}
+            </div>
           );
-        })}
-      </div>
-      <div className="todos__remove">
-        <span className="todos__heading">Competed Tasks</span>
-        {todos.map((todo) => {
+        }}
+      </Droppable>
+      <Droppable droppableId="TodosRemove">
+        {(provided) => {
           return (
-            <TodoCard
-              todo={todo}
-              todos={todos}
-              setTodos={setTodos}
-              key={todo.id}
-            />
+            <div
+              className="todos__remove"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              <span className="todos__heading">Competed Tasks</span>
+              <span className="todos__number">
+                Number of Tasks: {completedTodos.length}
+              </span>
+              {completedTodos.map((todo, index) => {
+                return (
+                  <TodoCard
+                    index={index}
+                    todos={completedTodos}
+                    todo={todo}
+                    key={todo.id}
+                    setTodos={setCompletedTodos}
+                  />
+                );
+              })}
+              {provided.placeholder}
+            </div>
           );
-        })}
-      </div>
+        }}
+      </Droppable>
     </div>
   );
 };

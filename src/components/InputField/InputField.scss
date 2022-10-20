@@ -3,12 +3,14 @@
 
 .input {
   display: flex;
+  justify-content: center;
   width: 90%;
   position: relative;
   align-items: center;
+  margin-bottom: 3rem;
 
   @include tablet {
-    width: 95%;
+    width: 70%;
   }
 
   &__box {
@@ -31,7 +33,7 @@
     border: none;
     font-size: 0.9375rem;
     background-color: $color-button-background;
-    color: white;
+    color: $color-button-text;
     transition: 0.2s all;
     box-shadow: 0 0 0.625rem black;
     cursor: pointer;

@@ -5,6 +5,7 @@
   width: 95%;
   margin-top: 0.625rem;
   gap: 2rem;
+  z-index: 2;
 
   @include desktop {
     flex-direction: row;
@@ -12,7 +13,11 @@
 
   &__heading {
     font-size: 1.875rem;
-    color: white;
+    color: black;
+  }
+
+  &__number {
+    margin-top: 10px;
   }
 
   &__active {
@@ -20,7 +25,7 @@
     border-radius: 0.3125rem;
     width: 47.5%;
     padding: 0.9375rem;
-    background-color: rgb(50, 195, 205);
+    background-color: white;
 
     @include tablet {
       width: 100%;
@@ -30,6 +35,5 @@
 
   &__remove {
     @extend .todos__active;
-    background-color: lightcoral;
   }
 }
