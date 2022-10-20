@@ -44,6 +44,7 @@ const App: React.FC = () => {
     }
 
     let draggingTask;
+    //Create new array so we don't mutate state
     let activeTasks = [...todos];
     let completedTasks = [...completedTodos];
 
