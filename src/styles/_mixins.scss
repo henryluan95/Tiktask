@@ -1,0 +1,32 @@
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
+
+@mixin tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin link-reset {
+  text-decoration: none;
+  color: white;
+}
+
+@mixin flex-layout($direction, $justify: flex-start, $align: flex-start) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}

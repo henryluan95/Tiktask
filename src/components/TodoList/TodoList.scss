@@ -1,0 +1,11 @@
+@use "../../styles/mixins" as *;
+
+.todos {
+  @include flex-layout(row, space-evenly);
+  width: 90%;
+  flex-wrap: wrap;
+
+  @include tablet {
+    width: 95%;
+  }
+}
