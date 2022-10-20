@@ -44,8 +44,8 @@ const App: React.FC = () => {
     }
 
     let draggingTask;
-    let activeTasks = todos;
-    let completedTasks = completedTodos;
+    let activeTasks = [...todos];
+    let completedTasks = [...completedTodos];
 
     //Taking the task out of the table
     if (source.droppableId === "TodosList") {
@@ -69,8 +69,8 @@ const App: React.FC = () => {
       completedTasks.splice(destination.index, 0, draggingTask);
     }
 
-    setTodos(activeTasks);
-    setCompletedTodos(completedTasks);
+    setTodos((prev) => activeTasks);
+    setCompletedTodos((prev) => completedTasks);
   };
 
   useEffect(() => {
