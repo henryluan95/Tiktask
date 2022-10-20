@@ -34,6 +34,7 @@
     color: white;
     transition: 0.2s all;
     box-shadow: 0 0 0.625rem black;
+    cursor: pointer;
 
     &:hover {
       background-color: $color-button-background-hover;
