@@ -36,7 +36,7 @@ Please click here for the live website: https://tiktask.vercel.app/
 
 
 ```bash
-$ cd my-happy-place
+$ cd Tiktask
 $ npm install
 ```
 
