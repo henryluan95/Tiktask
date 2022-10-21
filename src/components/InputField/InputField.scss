@@ -17,16 +17,20 @@
     width: 100%;
     border-radius: 3.125rem;
     padding: 1.25rem 1.875rem;
-    font-size: 1.5625rem;
+    font-size: 1rem;
     border: none;
     transition: 0.2s;
     box-shadow: inset 0 0 5px black;
+
+    @include tablet {
+      font-size: 1.5625rem;
+    }
   }
 
   &__submit {
     position: absolute;
     width: 6.25rem;
-    height: 3.125rem;
+    height: 2.5rem;
     margin: 0.75rem;
     border-radius: 3.125rem;
     right: 0;
@@ -37,6 +41,10 @@
     transition: 0.2s all;
     box-shadow: 0 0 0.625rem black;
     cursor: pointer;
+
+    @include tablet {
+      height: 3.125rem;
+    }
 
     &:hover {
       background-color: $color-button-background-hover;

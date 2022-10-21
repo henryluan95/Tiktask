@@ -6,6 +6,7 @@
   margin-top: 0.625rem;
   gap: 2rem;
   z-index: 2;
+  padding: 0 0.5rem;
 
   @include desktop {
     flex-direction: row;
@@ -23,12 +24,11 @@
   &__active {
     @include flex-layout(column, space-evenly);
     border-radius: 0.3125rem;
-    width: 47.5%;
+    width: 100%;
     padding: 0.9375rem;
     background-color: white;
 
     @include tablet {
-      width: 100%;
       margin-bottom: 10px;
     }
   }
