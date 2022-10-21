@@ -32,6 +32,8 @@ const App: React.FC = () => {
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
 
+    console.log(result);
+
     //If drag to un-droppable places, do nothing
     if (!destination) return;
 
@@ -64,10 +66,16 @@ const App: React.FC = () => {
     //Adding the task into the table
     if (destination.droppableId === "TodosList") {
       //Add it to the table
-      activeTasks.splice(destination.index, 0, draggingTask);
+      activeTasks.splice(destination.index, 0, {
+        ...draggingTask,
+        isDone: false,
+      });
     } else {
       //Add it to the table
-      completedTasks.splice(destination.index, 0, draggingTask);
+      completedTasks.splice(destination.index, 0, {
+        ...draggingTask,
+        isDone: true,
+      });
     }
 
     setTodos((prev) => activeTasks);

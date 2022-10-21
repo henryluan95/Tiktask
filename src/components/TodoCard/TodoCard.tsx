@@ -2,6 +2,7 @@ import { Todo } from "../Model/model";
 import { BiEdit } from "react-icons/bi";
 import { MdDone } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
+import { IoArrowUndoOutline } from "react-icons/io5";
 import "./TodoCard.scss";
 import { useEffect, useRef, useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
@@ -9,11 +10,22 @@ import { Draggable } from "react-beautiful-dnd";
 interface Props {
   todo: Todo;
   todos: Todo[];
+  completedTodos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
   index: number;
+  isActiveCard?: boolean;
 }
 
-const TodoCard: React.FC<Props> = ({ todo, todos, setTodos, index }) => {
+const TodoCard: React.FC<Props> = ({
+  todo,
+  todos,
+  setTodos,
+  index,
+  completedTodos,
+  setCompletedTodos,
+  isActiveCard,
+}) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [newTodo, setNewTodo] = useState<string>(todo.todo);
 
@@ -22,16 +34,23 @@ const TodoCard: React.FC<Props> = ({ todo, todos, setTodos, index }) => {
 
   //Create a function to cross of tasks that are done
   const handleDone = (id: number) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
-      )
+    const allTasks = todos.concat(completedTodos);
+    //On click, change isDone to the opposite
+    const newArray = allTasks.map((todo) =>
+      todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
     );
+
+    setTodos(newArray.filter((todo) => todo.isDone === false));
+    setCompletedTodos(newArray.filter((todo) => todo.isDone === true));
   };
 
   //Create a function to delete a task
   const handleDelete = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    if (isActiveCard) {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    } else {
+      setCompletedTodos(completedTodos.filter((todo) => todo.id !== id));
+    }
   };
 
   //Create a function to edit a task
@@ -67,32 +86,46 @@ const TodoCard: React.FC<Props> = ({ todo, todos, setTodos, index }) => {
                 className="todo__text"
                 ref={inputRef}
               />
-            ) : todo.isDone ? (
-              <s className="todo__text">{todo.todo}</s>
             ) : (
               <span className="todo__text">{todo.todo}</span>
             )}
 
             <div>
-              <span
-                className="todo__icon"
-                onClick={() => {
-                  if (!todo.isDone) {
-                    setEdit(!edit);
-                  }
-                }}
-              >
-                <BiEdit />
-              </span>
+              {/* Only display edit button when tasks are still active */}
+              {!todo.isDone && (
+                <span
+                  className="todo__icon"
+                  onClick={() => {
+                    if (!todo.isDone) {
+                      setEdit(!edit);
+                    }
+                  }}
+                >
+                  <BiEdit />
+                </span>
+              )}
               <span
                 className="todo__icon"
                 onClick={() => handleDelete(todo.id)}
               >
                 <AiOutlineDelete />
               </span>
-              <span className="todo__icon" onClick={() => handleDone(todo.id)}>
-                <MdDone />
-              </span>
+              {/* display check when task is active, display undo when task is completed */}
+              {!todo.isDone ? (
+                <span
+                  className="todo__icon"
+                  onClick={() => handleDone(todo.id)}
+                >
+                  <MdDone />
+                </span>
+              ) : (
+                <span
+                  className="todo__icon"
+                  onClick={() => handleDone(todo.id)}
+                >
+                  <IoArrowUndoOutline />
+                </span>
+              )}
             </div>
           </form>
         );

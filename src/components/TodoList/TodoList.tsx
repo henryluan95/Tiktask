@@ -37,8 +37,11 @@ const TodoList: React.FC<Props> = ({
                     index={index}
                     todo={todo}
                     todos={todos}
+                    completedTodos={completedTodos}
                     setTodos={setTodos}
+                    setCompletedTodos={setCompletedTodos}
                     key={todo.id}
+                    isActiveCard={true}
                   />
                 );
               })}
@@ -63,10 +66,12 @@ const TodoList: React.FC<Props> = ({
                 return (
                   <TodoCard
                     index={index}
-                    todos={completedTodos}
+                    todos={todos}
+                    completedTodos={completedTodos}
                     todo={todo}
                     key={todo.id}
-                    setTodos={setCompletedTodos}
+                    setTodos={setTodos}
+                    setCompletedTodos={setCompletedTodos}
                   />
                 );
               })}
