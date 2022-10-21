@@ -1,7 +1,7 @@
 @use "../../styles/mixins" as *;
 
 .todo {
-  display: flex;
+  @include flex-layout(row, space-between, center);
   border-radius: 5px;
   padding: 20px;
   margin-top: 15px;
@@ -28,7 +28,12 @@
     }
   }
 
+  &__icons {
+    @include flex-layout(row, space-between, center);
+  }
+
   &__icon {
+    @include flex-layout(row, space-between, center);
     margin-left: 0.625rem;
     font-size: 1.5625rem;
     cursor: pointer;

@@ -92,7 +92,7 @@ const TodoCard: React.FC<Props> = ({
               <s className="todo__text">{todo.todo}</s>
             )}
 
-            <div>
+            <div className="todo__icons">
               {/* Only display edit button when tasks are still active */}
               {!todo.isDone && (
                 <span
