@@ -86,8 +86,10 @@ const TodoCard: React.FC<Props> = ({
                 className="todo__text"
                 ref={inputRef}
               />
-            ) : (
+            ) : isActiveCard ? (
               <span className="todo__text">{todo.todo}</span>
+            ) : (
+              <s className="todo__text">{todo.todo}</s>
             )}
 
             <div>
