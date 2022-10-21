@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# TikTask
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tiktask is a task management application allowing users to add new tasks, manage active and completed tasks. 
 
-## Available Scripts
+Tiktask is completely respensive on different screen sizes. The tasks are stored into localstorage so the users won't lose their tasks after closing their browsers. It includes a drag and drop feature letting users to quickly move a task from one column to another.
 
-In the project directory, you can run:
+I used this project to practice Typescript - a strongly typed programming language that builts on top of Javascript. Learning how to use Typescript is one of the first tasks that I want to do after going through my bootcamp. After completing this project, I'm even more motivated to dig deeper into this programming language.
 
-### `npm start`
+Please click here for the live website: https://tiktask.vercel.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Project Screenshot
+**Interface**
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/personal-e4e76.appspot.com/o/Tiktask%2FTikTask.png?alt=media&token=49459eec-c09e-437d-870f-cc07dc2fc615)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Demo
+![App Demo](https://firebasestorage.googleapis.com/v0/b/personal-e4e76.appspot.com/o/Tiktask%2FTiktask.gif?alt=media&token=f8923290-c05e-4ed3-9234-907e1645f7ad)
 
-### `npm run build`
+## Tech Stacks
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone this repository.
+```$ https://github.com/henryluan95/Tiktask.git```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Run `npm install` from inside the client directory.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+$ cd my-happy-place
+$ npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Start React App
+```$ npm start```
 
-## Learn More
+## Author
+Henry Luan [@henryluan](https://github.com/henryluan95)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgements
+Followed a tutorial by Piyush from freecodecamp.org which you can [check out here](https://www.youtube.com/watch?v=FJDVKeh7RJI&t). 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Features that I fixed/added
+- When moving task from one column to another. The tutorial mutates states directly leading to incorrect rerendering. I created a copy of the objects and worked my logic on it.
+- Added a feature to undo a completed task.
+- Added conditional rendering for some of the icons on the task cards.
+- Changed the logic when switching between two columns, so the application could scale up to 3 or more columns.
